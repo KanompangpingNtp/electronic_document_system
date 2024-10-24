@@ -60,6 +60,7 @@ class ShowinformationController extends Controller
         $dompdf->render();
 
         // ส่งไฟล์ PDF ไปยังเบราว์เซอร์
-        return $dompdf->stream('form_' . $form->id . '.pdf');
+        return $dompdf->stream('แบบคำขอร้องทั่วไป' . $form->id . '.pdf');
+        // return $dompdf->stream('form_' . $form->id . '.pdf');
     }
 }

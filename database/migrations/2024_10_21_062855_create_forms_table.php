@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('district'); // เขต/อำเภอ
             $table->string('province'); // จังหวัด
             $table->string('phone'); // โทรศัพท์
+            $table->string('submission_name');//ชื่อหัวเรื่อง
             $table->text('submission'); // ขอยื่นคำร้อง
             $table->integer('document_count')->default(0); // จำนวนเอกสาร
             $table->integer('day'); // วัน

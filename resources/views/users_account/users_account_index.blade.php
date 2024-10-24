@@ -111,6 +111,10 @@
 
         <br>
 
+        <div class="mb-3 col-md-4">
+            <label for="complaintName" class="form-label">ชื่อเรื่องคำขอ</label>
+            <input type="text" class="form-control" id="complaintName" name="complaintName" placeholder="โปรดระบุ" required>
+        </div>
         <div class="mb-3 col-md-7">
             <label for="complaintDetails" class="form-label">ขอยื่นคำร้องต่อหน่วยงาน</label>
             <textarea class="form-control" id="complaintDetails" name="complaintDetails" rows="3" placeholder="โปรดระบุ" required></textarea>

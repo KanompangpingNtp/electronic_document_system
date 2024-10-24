@@ -28,6 +28,9 @@
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#submitModal-{{ $form->id }}">
                         <i class="bi bi-filetype-pdf"></i>
                     </button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#replyModal-{{ $form->id }}">
+                        <i class="bi bi-reply"></i>
+                    </button>
                 </td>
                 <td>
                     @if($form->status == 1)
@@ -52,7 +55,7 @@
                 </div>
                 <div class="modal-body">
                     {{-- <span style="color: black;">preview</span> <a href="{{ route('exportPDF', $form->id) }}" class="btn btn-danger btn-sm" target="_blank">
-                        <i class="bi bi-file-earmark-pdf"></i>
+                    <i class="bi bi-file-earmark-pdf"></i>
                     </a> --}}
                     <span style="color: black;">ไฟล์แนบ </span>
                     @foreach($form->attachments as $attachment)
@@ -64,6 +67,44 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="replyModal-{{ $form->id }}" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="replyModalLabel">ตอบกลับฟอร์ม</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><span style="color: black;">ชื่อผู้ส่งฟอร์ม : </span>{{ $form->user ? $form->user->fullname : 'ผู้ใช้งานทั่วไป' }}</p>
+                    <p>ข้อความตอบกลับ</p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="text-center">
+                                <th>วันที่ตอบกลับ</th>
+                                <th>ข้อความที่ตอบกลับ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($form->replyform as $reply)
+                            <tr class="text-center">
+                                <td>{{ $reply->created_at->format('d/m/Y') }}</td>
+                                <td>{{ $reply->message }}</td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="2" class="text-center">ยังไม่มีการตอบกลับ</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                    </div>
                 </div>
             </div>
         </div>

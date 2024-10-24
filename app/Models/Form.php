@@ -28,6 +28,7 @@ class Form extends Model
         'district',
         'province',
         'phone',
+        'submission_name',
         'submission', // ใช้ submission จาก complaintDetails
         'document_count', // จำนวนเอกสาร
         'status', // เพิ่ม field สถานะ

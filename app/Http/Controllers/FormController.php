@@ -46,6 +46,7 @@ class FormController extends Controller
             'district' => 'required|string|max:255',
             'province' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
+            'complaintName' => 'required|string|max:255',
             'complaintDetails' => 'required|string',
             'documentNumber' => 'required|integer',
             'fileUpload' => 'nullable|file|mimes:pdf,doc,docx,jpeg,png|max:2048',
@@ -77,6 +78,7 @@ class FormController extends Controller
             'district' => $validatedData['district'],
             'province' => $validatedData['province'],
             'phone' => $validatedData['phone'],
+            'submission_name' => $validatedData['complaintName'],
             'submission' => $validatedData['complaintDetails'],
             'document_count' => $validatedData['documentNumber'],
         ]);
@@ -114,6 +116,7 @@ class FormController extends Controller
             'district' => 'required|string|max:255',
             'province' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
+            'complaintName' => 'required|string|max:255',
             'complaintDetails' => 'required|string',
             'documentNumber' => 'required|integer',
             'fileUpload' => 'nullable|file|mimes:pdf,doc,docx,jpeg,png|max:2048',
@@ -156,6 +159,7 @@ class FormController extends Controller
             'district' => $validatedData['district'],
             'province' => $validatedData['province'],
             'phone' => $validatedData['phone'],
+            'submission_name' => $validatedData['complaintName'],
             'submission' => $validatedData['complaintDetails'],
             'document_count' => $validatedData['documentNumber'],
         ]);
@@ -163,43 +167,43 @@ class FormController extends Controller
         return redirect()->back()->with('success', 'ข้อมูลฟอร์มถูกอัปเดตสำเร็จ');
     }
 
-    // public function reply(Request $request, $formId)
-    // {
-    //     $request->validate([
-    //         'message' => 'required|string|max:1000',
-    //     ]);
-
-    //     ReplyForm::create([
-    //         'form_id' => $formId,
-    //         'message' => $request->message,
-    //     ]);
-
-    //     return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
-    // }
     public function reply(Request $request, $formId)
     {
         $request->validate([
             'message' => 'required|string|max:1000',
         ]);
 
-        // ตรวจสอบว่ามีการตอบกลับอยู่แล้วหรือไม่
-        $reply = ReplyForm::where('form_id', $formId)->first();
-
-        if ($reply) {
-            // ถ้ามีการตอบกลับอยู่แล้ว ให้ทำการอัปเดต
-            $reply->update([
-                'message' => $request->message,
-            ]);
-        } else {
-            // ถ้ายังไม่มี ให้สร้างการตอบกลับใหม่
-            ReplyForm::create([
-                'form_id' => $formId,
-                'message' => $request->message,
-            ]);
-        }
+        ReplyForm::create([
+            'form_id' => $formId,
+            'message' => $request->message,
+        ]);
 
         return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
     }
+    // public function reply(Request $request, $formId)
+    // {
+    //     $request->validate([
+    //         'message' => 'required|string|max:1000',
+    //     ]);
+
+    //     // ตรวจสอบว่ามีการตอบกลับอยู่แล้วหรือไม่
+    //     $reply = ReplyForm::where('form_id', $formId)->first();
+
+    //     if ($reply) {
+    //         // ถ้ามีการตอบกลับอยู่แล้ว ให้ทำการอัปเดต
+    //         $reply->update([
+    //             'message' => $request->message,
+    //         ]);
+    //     } else {
+    //         // ถ้ายังไม่มี ให้สร้างการตอบกลับใหม่
+    //         ReplyForm::create([
+    //             'form_id' => $formId,
+    //             'message' => $request->message,
+    //         ]);
+    //     }
+
+    //     return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
+    // }
 
 
     // public function updateStatus($id)
