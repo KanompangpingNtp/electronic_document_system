@@ -21,7 +21,10 @@
             @foreach($forms as $form)
             <tr class="text-center">
                 <td>{{ $loop->iteration }}</td> <!-- แสดงลำดับที่ใช้ $loop->iteration -->
-                <td>{{ $form->created_at->format('d/m/Y') }}</td>
+                {{-- <td>{{ $form->created_at->format('d/m/Y') }}</td> --}}
+                <td>
+                    {{ $form->created_at->timezone('Asia/Bangkok')->translatedFormat('j F') }} {{ $form->created_at->year + 543 }}
+                </td>
                 <td>{{ $form->user ? $form->user->fullname : 'ผู้ใช้งานทั่วไป' }}</td>
                 <td>{{ $form->user_name_verifier }}</td>
                 <td>
