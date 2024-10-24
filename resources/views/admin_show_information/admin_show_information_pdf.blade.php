@@ -308,6 +308,7 @@
                 <td style="width: 50%; vertical-align: top; text-align: center;">
                     <p>ลงชื่อ<span class="fullname">{{ $form->fullname }}</span>ผู้ยื่นคำร้อง</p>
                     <p>(<span class="fullname">{{ $form->fullname }}</span>)</p>
+
                     <p>ลงชื่อ .....................................ผู้เขียน/บันทึก</p>
                     <p>( ............................................................ )</p>
                     <p>ความคิดเห็นปลัดเทศบาลเมืองต้นแบบ ๔.๐</p>

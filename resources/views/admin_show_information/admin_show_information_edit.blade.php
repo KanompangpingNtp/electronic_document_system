@@ -130,7 +130,7 @@
 
         <br>
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-md-2 mb-3">
                 <label for="documentNumber" class="form-label">จำนวนเอกสาร <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="documentNumber" name="documentNumber" value="{{ old('documentNumber', $form->document_count) }}" placeholder="โปรดระบุ" required>
@@ -142,7 +142,41 @@
                 <label for="fileUpload" class="form-label">ไฟล์แนบ</label>
                 <input type="file" class="form-control" id="fileUpload" name="fileUpload" >
             </div>
+        </div> --}}
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <label for="documentNumber" class="form-label">จำนวนเอกสาร</label>
+                <input type="number" class="form-control" id="documentNumber" name="documentNumber" placeholder="โปรดระบุ" required oninput="updateFileInputs()">
+            </div>
         </div>
+
+        <div class="col-md-4" id="fileInputsContainer">
+            <label for="fileUpload" class="form-label">ไฟล์แนบ</label>
+            <div id="fileInputs">
+                <!-- Inputs for file uploads will be added here -->
+            </div>
+        </div>
+
+        <script>
+            function updateFileInputs() {
+                const container = document.getElementById('fileInputs');
+                const documentNumber = document.getElementById('documentNumber').value;
+
+                // Clear existing file inputs
+                container.innerHTML = '';
+
+                // Create file inputs based on the number provided
+                for (let i = 0; i < documentNumber; i++) {
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.className = 'form-control mb-2';
+                    fileInput.name = `fileUpload[]`; // Use array notation to handle multiple files
+                    fileInput.id = `fileUpload-${i + 1}`; // Optional: give each input a unique id
+                    container.appendChild(fileInput);
+                }
+            }
+        </script>
 
         <br>
 
