@@ -43,7 +43,7 @@
 
         <footer style="background-color: #1c2833; color: white; padding: 20px; text-align: center;">
             <div>
-                <p>&copy; 2024 ชื่อบริษัท | สงวนลิขสิทธิ์</p>
+                <p>&copy; 2024 Gm Sky Smartcity สงวนลิขสิทธิ์</p>
                 <p><a href="{{route('showLoginForm')}}" style="color: white; text-decoration: none;">สำหรับผู้ดูแลระบบ</a> | <a href="#" style="color: white; text-decoration: none;">คู่มือการใช้งาน</a></p>
             </div>
         </footer>

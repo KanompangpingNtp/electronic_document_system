@@ -164,7 +164,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; ระบบแบบประเมินความพึงพอใจ</span>
+                        <span>Copyright &copy; Gm Sky Smartcity</span>
                     </div>
                 </div>
             </footer>
