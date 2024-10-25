@@ -93,7 +93,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($form->replyform as $reply)
+                            @forelse($form->replyforms as $reply)
                             <tr class="text-center">
                                 <td>
                                     {{ $reply->created_at->timezone('Asia/Bangkok')->translatedFormat('d F') }} {{ $reply->created_at->year + 543 }}

@@ -29,7 +29,7 @@ class ShowinformationController extends Controller
     public function showinformationUser()
     {
         // ดึงข้อมูลแบบฟอร์มเฉพาะของผู้ใช้ที่เข้าสู่ระบบ
-        $forms = Form::with(['user', 'replyform'])
+        $forms = Form::with(['user', 'replyforms'])
                     ->where('user_id', Auth::id()) // กรองเฉพาะแบบฟอร์มของผู้ใช้ที่เข้าสู่ระบบ
                     ->get();
 
