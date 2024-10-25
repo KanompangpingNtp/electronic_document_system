@@ -18,4 +18,5 @@ class ReplyForm extends Model
     {
         return $this->belongsTo(Form::class);
     }
+
 }

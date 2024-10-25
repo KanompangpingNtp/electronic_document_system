@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Form;
+use App\Models\ReplyForm;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class ShowinformationController extends Controller
     //
     public function showinformationIndex()
     {
-        $forms = Form::with(['user', 'replyform'])->get(); // เพิ่ม 'replyform' เพื่อดึงข้อมูลตอบกลับ
+        $forms = Form::with(['user', 'replyforms'])->get(); // เพิ่ม 'replyform' เพื่อดึงข้อมูลตอบกลับ
 
         return view('admin_show_information.admin_show_information', compact('forms'));
     }

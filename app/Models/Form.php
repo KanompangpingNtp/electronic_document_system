@@ -47,8 +47,13 @@ class Form extends Model
         return $this->hasMany(Attachment::class);
     }
 
-    public function replyform()
+    // public function replyform()
+    // {
+    //     return $this->hasMany(Replyform::class);
+    // }
+    // ความสัมพันธ์กับการตอบกลับ (ฟอร์มหนึ่งมีหลายการตอบกลับ)
+    public function replyforms()
     {
-        return $this->hasMany(Replyform::class);
+        return $this->hasMany(ReplyForm::class);
     }
 }
