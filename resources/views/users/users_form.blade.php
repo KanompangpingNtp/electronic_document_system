@@ -20,7 +20,7 @@
         <input type="hidden" id="year" name="year">
 
         <div class="mb-3 col-md-3">
-            <label for="writeAt" class="form-label">เขียนที่</label>
+            <label for="writeAt" class="form-label">เขียนที่<span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="writeAt" name="writeAt" placeholder="โปรดระบุ" required>
         </div>
 
@@ -50,7 +50,7 @@
 
         <div class="row">
             <div class="col-md-2 mb-3">
-                <label for="salutation" class="form-label">คำนำหน้า</label>
+                <label for="salutation" class="form-label">คำนำหน้า<span class="text-danger">*</span></label>
                 <select class="form-select" id="salutation" name="salutation">
                     <option selected>นาย</option>
                     <option>นาง</option>
@@ -58,15 +58,15 @@
                 </select>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="fullname" class="form-label">ชื่อ - สกุล</label>
+                <label for="fullname" class="form-label">ชื่อ - สกุล<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="fullname" name="fullname" placeholder="ชื่อ - นามสกุล" required>
             </div>
             <div class="col-md-1 mb-3">
-                <label for="age" class="form-label">อายุ</label>
+                <label for="age" class="form-label">อายุ<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="age" name="age" placeholder="โปรดระบุ" required>
             </div>
             <div class="col-md-3 mb-3">
-                <label for="occupation" class="form-label">อาชีพ</label>
+                <label for="occupation" class="form-label">อาชีพ<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="occupation" name="occupation" placeholder="โปรดระบุ" required>
             </div>
         </div>
@@ -76,35 +76,35 @@
         <h5>ที่อยู่</h5>
         <div class="row">
             <div class="col-md-2 mb-3">
-                <label for="houseNo" class="form-label">บ้านเลขที่</label>
+                <label for="houseNo" class="form-label">บ้านเลขที่<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="houseNo" name="houseNo" placeholder="โปรดระบุ" required>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="villageNo" class="form-label">หมู่ที่</label>
+                <label for="villageNo" class="form-label">หมู่ที่<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="villageNo" name="villageNo" placeholder="โปรดระบุ" required>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="alley" class="form-label">ตรอก/ซอย</label>
+                <label for="alley" class="form-label">ตรอก/ซอย<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="alley" name="alley" placeholder="โปรดระบุ">
             </div>
             <div class="col-md-2 mb-3">
-                <label for="road" class="form-label">ถนน</label>
+                <label for="road" class="form-label">ถนน<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="road" name="road" placeholder="โปรดระบุ">
             </div>
             <div class="col-md-2 mb-3">
-                <label for="subDistrict" class="form-label">แขวง/ตำบล</label>
+                <label for="subDistrict" class="form-label">แขวง/ตำบล<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="subDistrict" name="subDistrict" placeholder="โปรดระบุ" required>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="district" class="form-label">เขต/อำเภอ</label>
+                <label for="district" class="form-label">เขต/อำเภอ<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="district" name="district" placeholder="โปรดระบุ" required>
             </div>
             <div class="col-md-2 mb-3">
-                <label for="province" class="form-label">จังหวัด</label>
+                <label for="province" class="form-label">จังหวัด<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="province" name="province" placeholder="โปรดระบุ" required>
             </div>
             <div class="mb-3 col-md-3">
-                <label for="phone" class="form-label">โทรศัพท์</label>
+                <label for="phone" class="form-label">โทรศัพท์<span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="โปรดระบุ" required maxlength="15">
             </div>
         </div>
@@ -112,11 +112,11 @@
         <br>
 
         <div class="mb-3 col-md-4">
-            <label for="complaintName" class="form-label">ชื่อเรื่องคำขอ</label>
+            <label for="complaintName" class="form-label">ชื่อเรื่องคำขอ<span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="complaintName" name="complaintName" placeholder="โปรดระบุ" required>
         </div>
         <div class="mb-3 col-md-7">
-            <label for="complaintDetails" class="form-label">ขอยื่นคำร้องต่อหน่วยงาน</label>
+            <label for="complaintDetails" class="form-label">ขอยื่นคำร้องต่อหน่วยงาน<span class="text-danger">*</span></label>
             <textarea class="form-control" id="complaintDetails" name="complaintDetails" rows="3" placeholder="โปรดระบุ" required></textarea>
         </div>
 
@@ -135,7 +135,7 @@
         </div> --}}
         <div class="row">
             <div class="col-md-2 mb-3">
-                <label for="documentNumber" class="form-label">จำนวนเอกสาร</label>
+                <label for="documentNumber" class="form-label">จำนวนเอกสาร<span class="text-danger">*</span></label>
                 <input type="number" class="form-control" id="documentNumber" name="documentNumber" placeholder="โปรดระบุ" required oninput="updateFileInputs()">
             </div>
         </div>
@@ -152,16 +152,14 @@
                 const container = document.getElementById('fileInputs');
                 const documentNumber = document.getElementById('documentNumber').value;
 
-                // Clear existing file inputs
                 container.innerHTML = '';
 
-                // Create file inputs based on the number provided
                 for (let i = 0; i < documentNumber; i++) {
                     const fileInput = document.createElement('input');
                     fileInput.type = 'file';
                     fileInput.className = 'form-control mb-2';
-                    fileInput.name = `fileUpload[]`; // Use array notation to handle multiple files
-                    fileInput.id = `fileUpload-${i + 1}`; // Optional: give each input a unique id
+                    fileInput.name = `fileUpload[]`;
+                    fileInput.id = `fileUpload-${i + 1}`;
                     container.appendChild(fileInput);
                 }
             }
