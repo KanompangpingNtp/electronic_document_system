@@ -121,7 +121,7 @@
 
 <script src="{{asset('js/admin_show_information.js')}}"></script>
 
-<td id="thai-date-{{ $reply->id }}"></td>
+{{-- <td id="thai-date-{{ $reply->id }}"></td> --}}
 
 @endsection
 
