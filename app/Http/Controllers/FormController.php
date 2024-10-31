@@ -237,6 +237,24 @@ class FormController extends Controller
         return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
     }
 
+    public function userreply(Request $request, $formId)
+    {
+        $request->validate([
+            'message' => 'required|string|max:1000',
+        ]);
+
+        // dd($request);
+        // dd(auth()->id());
+
+        ReplyForm::create([
+            'form_id' => $formId,
+            'user_id' => auth()->id(),
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
+    }
+
     // public function reply(Request $request, $formId)
     // {
     //     $request->validate([

@@ -123,7 +123,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                    <form action="{{ route('forms.reply', $form->id) }}" method="POST">
+                    <form action="{{ route('userreply', $form->id) }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="message" class="form-label">ข้อความตอบกลับ</label>
