@@ -64,6 +64,33 @@ class ShowinformationController extends Controller
         return $dompdf->stream('แบบคำขอร้องทั่วไป' . $form->id . '.pdf');
     }
 
+    public function userexportPDF($id)
+    {
+        $form = Form::find($id);
+        if (!$form) {
+            return redirect()->back()->with('error', 'ไม่พบข้อมูลฟอร์ม');
+        }
+
+        // กำหนด Options สำหรับ Dompdf
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+
+        // สร้าง instance ของ Dompdf
+        $dompdf = new Dompdf($options);
+
+        // โหลด view ที่ต้องการสร้าง PDF
+        $html = view('admin_show_information.admin_show_information_pdf', compact('form'))->render();
+
+        // โหลด HTML ลงใน Dompdf
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // ส่งไฟล์ PDF ไปยังเบราว์เซอร์
+        return $dompdf->stream('แบบคำขอร้องทั่วไป' . $form->id . '.pdf');
+    }
+
     public function showinformationuserEdit($id)
     {
         // ค้นหาฟอร์มโดย ID

@@ -65,7 +65,7 @@ Route::group(['middleware' => 'role:user'], function () {
     Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
     Route::get('/user/forms', [ShowinformationController::class, 'showinformationUser'])->name('showinformationUser');
     Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply'); // เปิดให้ผู้ใช้ตอบกลับ
-    Route::get('/forms/export/{id}', [ShowinformationController::class, 'exportPDF'])->name('exportPDF');
+    Route::get('/user/forms/export/{id}', [ShowinformationController::class, 'userexportPDF'])->name('userexportPDF');
     Route::get('/user/show-information/edit/{id}', [ShowinformationController::class, 'showinformationuserEdit'])->name('showinformationuserEdit');
     Route::post('/user/form/update/{id}', [FormController::class, 'formsuserEdit'])->name('formsuserEdit');
 });
