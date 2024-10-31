@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('reply_forms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('form_id')->constrained('forms')->onDelete('cascade'); // Link to the form
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('message'); // Store the reply message
             $table->timestamps();
         });

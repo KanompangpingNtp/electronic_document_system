@@ -3,6 +3,16 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
+@if ($message = Session::get('success'))
+<script>
+    Swal.fire({
+        icon: 'success'
+        , title: '{{ $message }}'
+    , })
+
+</script>
+@endif
+
 <div class="container">
     <h3 class="text-center">ข้อมูลการส่งแบบฟอร์ม</h3>
     <br>
@@ -34,6 +44,7 @@
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#replyModal-{{ $form->id }}">
                         <i class="bi bi-reply"></i>
                     </button>
+                    <a href="{{ route('showinformationuserEdit', $form->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                 </td>
                 <td>
                     @if($form->status == 1)
@@ -57,9 +68,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- <span style="color: black;">preview</span> <a href="{{ route('exportPDF', $form->id) }}" class="btn btn-danger btn-sm" target="_blank">
+                    <span style="color: black;">preview</span> <a href="{{ route('exportPDF', $form->id) }}" class="btn btn-danger btn-sm" target="_blank">
                     <i class="bi bi-file-earmark-pdf"></i>
-                    </a> --}}
+                    </a>
+                    <br>
+                    <br>
                     <span style="color: black;">ไฟล์แนบ </span>
                     @foreach($form->attachments as $attachment)
                     <span class="d-inline me-2">
@@ -76,7 +89,7 @@
     </div>
 
     <div class="modal fade" id="replyModal-{{ $form->id }}" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="replyModalLabel">ตอบกลับฟอร์ม</h5>
@@ -88,6 +101,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr class="text-center">
+                                <th>ผู้ตอบกลับ</th>
                                 <th>วันที่ตอบกลับ</th>
                                 <th>ข้อความที่ตอบกลับ</th>
                             </tr>
@@ -95,6 +109,7 @@
                         <tbody>
                             @forelse($form->replyforms as $reply)
                             <tr class="text-center">
+                                <td>{{ $reply->user->fullname ?? 'Unknown User' }}</td>
                                 <td>
                                     {{ $reply->created_at->timezone('Asia/Bangkok')->translatedFormat('d F') }} {{ $reply->created_at->year + 543 }}
                                     {{ $reply->created_at->format('H:i') }} น.
@@ -103,14 +118,25 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2" class="text-center">ยังไม่มีการตอบกลับ</td>
+                                <td colspan="3" class="text-center">ยังไม่มีการตอบกลับ</td>
                             </tr>
                             @endforelse
                         </tbody>
                     </table>
-                    <div class="modal-footer">
+                    <form action="{{ route('forms.reply', $form->id) }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="message" class="form-label">ข้อความตอบกลับ</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                            <button type="submit" class="btn btn-primary">ส่งตอบกลับ</button>
+                        </div>
+                    </form>
+                    {{-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

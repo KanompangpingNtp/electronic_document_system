@@ -63,4 +63,13 @@ class ShowinformationController extends Controller
         // ส่งไฟล์ PDF ไปยังเบราว์เซอร์
         return $dompdf->stream('แบบคำขอร้องทั่วไป' . $form->id . '.pdf');
     }
+
+    public function showinformationuserEdit($id)
+    {
+        // ค้นหาฟอร์มโดย ID
+        $form = Form::findOrFail($id);
+        return view('users_account_form_follow.users_account_form_edit', compact('form'));
+    }
+
+
 }

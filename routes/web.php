@@ -42,17 +42,42 @@ Route::post('/formsCreate', [FormController::class, 'formsCreate'])->name('forms
 // Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
 
 // Route Group สำหรับ Admin
+// Route::group(['middleware' => 'role:admin'], function () {
+//     Route::get('/admin/showinformationIndex', [ShowinformationController::class, 'showinformationIndex'])->name('showinformationIndex');
+//     Route::get('/admin/show-information/edit/{id}', [ShowinformationController::class, 'showinformationEdit'])->name('showinformationEdit');
+//     Route::post('/admin/form/update/{id}', [FormController::class, 'formsEdit'])->name('admin.form.update');
+//     Route::get('/forms/export/{id}', [ShowinformationController::class, 'exportPDF'])->name('exportPDF');
+//     Route::post('/forms/{id}/update-status', [FormController::class, 'updateStatus'])->name('updateStatus');
+//     Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply');
+// });
+
+// // Route Group สำหรับ User
+// // Route::group(['middleware' => 'role:user'], function () {
+// //     Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
+// //     Route::get('/user/forms', [ShowinformationController::class, 'showinformationUser'])->name('showinformationUser');
+// //     // Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply');
+// //     Route::get('/forms/export/{id}', [ShowinformationController::class, 'exportPDF'])->name('exportPDF');
+// // });
+
+
+// Route Group สำหรับ User
+Route::group(['middleware' => 'role:user'], function () {
+    Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
+    Route::get('/user/forms', [ShowinformationController::class, 'showinformationUser'])->name('showinformationUser');
+    Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply'); // เปิดให้ผู้ใช้ตอบกลับ
+    Route::get('/forms/export/{id}', [ShowinformationController::class, 'exportPDF'])->name('exportPDF');
+    Route::get('/user/show-information/edit/{id}', [ShowinformationController::class, 'showinformationuserEdit'])->name('showinformationuserEdit');
+    Route::post('/user/form/update/{id}', [FormController::class, 'formsuserEdit'])->name('formsuserEdit');
+});
+
+// Route Group สำหรับ Admin
 Route::group(['middleware' => 'role:admin'], function () {
     Route::get('/admin/showinformationIndex', [ShowinformationController::class, 'showinformationIndex'])->name('showinformationIndex');
     Route::get('/admin/show-information/edit/{id}', [ShowinformationController::class, 'showinformationEdit'])->name('showinformationEdit');
     Route::post('/admin/form/update/{id}', [FormController::class, 'formsEdit'])->name('admin.form.update');
     Route::get('/forms/export/{id}', [ShowinformationController::class, 'exportPDF'])->name('exportPDF');
     Route::post('/forms/{id}/update-status', [FormController::class, 'updateStatus'])->name('updateStatus');
-    Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply');
+    Route::post('/forms/{form}/reply', [FormController::class, 'reply'])->name('forms.reply'); // เปิดให้ผู้ดูแลตอบกลับ
 });
 
-// Route Group สำหรับ User
-Route::group(['middleware' => 'role:user'], function () {
-    Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
-    Route::get('/user/forms', [ShowinformationController::class, 'showinformationUser'])->name('showinformationUser');
-});
+
